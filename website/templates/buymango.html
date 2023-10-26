@@ -1,0 +1,155 @@
+{% extends "base.html" %}{% block title %}BuyMango{% endblock %}
+{% block content %}
+<!-- banner Section start -->
+<section class="banner_section">
+    <div class="container">
+        <div class="banner-content">
+            <h1>Buy Mango</h1>
+        </div>
+    </div>
+</section>
+<!-- banner section exit -->
+
+<section class="buymango">
+    <div class="container">
+        <div class="col-12 text-center pb-5">
+            <h2 class="section-title">Mango Season 2024</h2>
+            <p class="section-subtitle">Please note that ordering for Season 2023 is stopped now. 
+                We have started accepting orders for Season 2024. At this point, we are taking orders at the same rate as Season 2023. 
+                Please order in advance and get rate protection against further rate hikes.</p>
+        </div>
+
+        <div class="col-12 buymango-form">
+            <div class="row">
+                <div class="col-lg-7 mb-5">
+                    <form method="POST" class="row g-3">
+                        <div class="col-md-4 mb-8">
+                          <p>Step-1:</p>
+
+                          <div class="custom-dropdown">
+                          <select class="form-control" name="week" id="selectedWeekValue">
+                              <option selected>Select Dispatch Week:</option>
+                              <option value="April week1 2024">April week1 2024</option>
+                              <option value="April week2 2024">April week2 2024</option>
+                              <option value="April week3 2024">April week3 2024</option>
+                              <option value="April week4 2024">April week4 2024</option>
+                              <option value="May week1 2024">May week1 2024</option>
+                              <option value="May week2 2024">May week2 2024</option>
+                          </select>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-8">
+                          <p>Step-2:</p>
+                          
+                          <div>
+                              <div class="row row-cols-2 row-cols-lg-3 g-2 g-lg-3">
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption1">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption1" value="A1+">
+                                        <p>A1+</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption2">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption2" value="A1">
+                                        <p>A1</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption3">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption3" value="1">
+                                        <p>1</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption4">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption4" value="2">
+                                        <p>2</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption5">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption5" value="3">
+                                        <p>3</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-1">
+                                  <div class="p-2 border bg-light">
+                                    <label class="form-check-label" for="radioOption6">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="radioOption6" value="4">
+                                        <p>4</p>
+                                      </div>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mb-8">
+                          <p>Step-3:</p>
+                          <div class="custom-dropdown">
+                          <select class="form-control" name="quantity" id="selectedQuantityValue">
+                              <option selected>Select Quantity(in Dozens):</option>
+                              <option value="1"> 1 </option>
+                              <option value="2"> 2 </option>
+                              <option value="4"> 4 </option>
+                              <option value="6"> 6 </option>
+                              <option value="10"> 10 </option>
+                          </select>
+                          </div>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn main-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Add to Cart
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">Order Details</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <p><strong>Selected Dispatch Week:</strong> <span id="selectedWeekValue"></span></p>
+                                <p><strong>Selected Grade:</strong> <span id="selectedGradeValue"></span></p>
+                                <p><strong>Selected Quantity (in Dozens):</strong> <span id="selectedQuantityValue"></span></p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn main-btn" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn main-btn">Add to Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

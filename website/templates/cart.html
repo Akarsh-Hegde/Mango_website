@@ -1,0 +1,51 @@
+{% extends "base.html" %}{% block title %}Cart{% endblock %}
+{% block content %}
+<section class="banner_section">
+    <div class="container">
+        <div class="banner-content">
+            <h1>Your Cart</h1>
+        </div>
+    </div>
+</section>
+<section class="contact_section">
+    <div class="container">
+        <div class="row justify-content-center">
+            
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <form method="POST">
+            <tbody>
+            {% for cart in carts %}
+            <form method="POST">
+
+                <td>{{ cart.id }}</td>
+                <td>{{ cart.name }}</td>
+                <td>Rs. {{ cart.price }}</td>
+                <td>{{ cart.quantity }}</td>
+                <td>Rs. {{ cart.price*cart.quantity }}</td>
+                
+                <td>
+                    <input type="hidden" name="id" value="{{ cart.id }}"/>
+                    <input type="submit" name="remove" value="Remove" class="btn btn-secondary"/>
+                    <input type="submit" name="buy" value="Buy Now" class="btn btn-primary"/>
+                </td>
+            </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+        </form>
+
+        </table>
+    </div>    
+</section>
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends "base.html" %} {% block title %}Admin{% endblock %} 
+{% block content %}
+
+<!-- banner Section start -->
+<section class="banner_section">
+    <div class="container">
+        <div class="banner-content">
+            <h1>Admin</h1>
+        </div>
+    </div>
+</section>
+<!-- banner section exit -->
+<!--Contact Section Start-->
+<section class="contact_section">
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+        </br>
+        <h5 align="center">Add New Product</h5>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Enter Product Name"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Price </label>
+            <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="price"
+            placeholder="Product Price"/>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity </label>
+            <input
+            type="number"
+            class="form-control"
+            id="quantity"
+            name="quantity"
+            placeholder="Add quantity"/>
+        </div>
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Description</span>
+            </div>
+            <input
+            type="text"
+            class="form-control"
+            id="description"
+            name="description"
+            placeholder="Product Description"/>
+            
+        </div>
+        <div class="form-group">
+            <label for="img"> Image </label>
+            <input type="file" class="form-control" name="img" />                                   
+        </div>
+        <br />
+        <input type="submit" name="add" value="Add" class="btn btn-outline btn-success" />
+        </form>
+        </br>
+        <h5 align="center">All Products</h5>
+
+        <table class="table" name="Product">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for product in products %}
+                <form method="POST" >
+                    <div class="modal fade" id="Modal-EditProduct-{{ product.id }}"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ModalLabel">
+                                    <!-- -->
+                                    {{ product.name }}
+                                    </h5>
+                                        <button type="button" class="close"
+                                            data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                </div>
+                                <div class="modal-body">Edit Product-
+                                {{ product.name }}
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter Product Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price </label>
+                                    <input
+                                    type="number"
+                                    class="form-control"
+                                    id="price"
+                                    name="price"
+                                    placeholder="Product Price"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quantity">Quantity </label>
+                                    <input
+                                    type="number"
+                                    class="form-control"
+                                    id="quantity"
+                                    name="quantity"
+                                    placeholder="Add quantity"/>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Description</span>
+                                    </div>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="description"
+                                    name="description"
+                                    placeholder="Product Description"/>
+                                    
+                                </div>
+                                
+                                <br />
+                                </div>
+                                    <div class="modal-footer">
+                                        
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Update Purchase" class="btn btn-primary"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>Rs.{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                
+                <td>
+                    <input type="hidden" name="id" value="{{ product.id }}"/>
+                    <input type="submit" name="remove" value="Remove" class="btn btn-secondary"/>
+                    <input type="submit" name="edit" value="Edit" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-EditProduct-{{ product.id }}"/>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </form>
+            </br>
+            </table>
+            <h5 align="center">User-cart</h5>
+
+                <table class="table" name="User-cart">
+                    <thead>
+                        <tr>
+                            <!-- Your Columns HERE -->
+                            <th scope="col">User ID</th>
+                            <th scope="col">User Email</th>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Options</th>
+                        </tr>
+                    </thead>
+                    <form method="POST">
+                    <tbody>
+                        {% for cart in carts %}
+                        <td>{{ cart.owned_user.id }}</td>
+                        <td>{{ cart.owned_user.email }}</td>
+
+                        <td>{{ cart.id }}</td>
+                        <td>{{ cart.name }}</td>
+                        <td>Rs.{{ cart.price }}</td>
+                        <td>{{ cart.quantity }}</td>
+                        
+                        <td>
+                            <input type="hidden" name="id" value="{{ cart.id }}"/>
+                            <input type="submit" name="remove" value="Remove" class="btn btn-secondary"/>
+                            <input type="submit" name="buy" value="Add" class="btn btn-primary"/>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </form>
+            </br>
+            </table>
+        </div>
+    </section>
+{% endblock %}
+                
