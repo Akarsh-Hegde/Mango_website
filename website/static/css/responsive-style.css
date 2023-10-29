@@ -65,6 +65,14 @@
         padding-top: 12.5rem;
         padding-bottom: 3rem;
     }
+    .buymango .banner_section {
+        padding-top: 12.5rem;
+        padding-bottom: 3rem;
+    }
+    .admin .banner_section {
+        padding-top: 12.5rem;
+        padding-bottom: 3rem;
+    }
 }
 
 /* Media Query 767px */

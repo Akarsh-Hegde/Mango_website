@@ -260,6 +260,7 @@ section {
 .contact .banner_section,
 .buymango .banner_section,
 .buyproduct .banner_section,
+.admin .banner_section,
 .distributors .banner_section {
     background: url('/static/images/banner-slide/top-banner.jpg');
     background-repeat: no-repeat;
@@ -328,7 +329,35 @@ section {
     font-weight: 400;
     font-family: var(--secondary-font);
 }
+/* 01 admin css */
+.admin .admin-form,
+.distributors .admin-form {
+    background-color: var(--light-color);
+    padding: 5rem;
+    box-shadow: 0 0.2rem 1.5rem rgb(0 0 0 / 4%);
+}
 
+.admin .admin-form .form-control:focus,
+.distributors .admin-form .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.admin .admin-form .form-control::placeholder,
+.distributors .admin-form .form-control::placeholder {
+    color: var(--primary-text);
+}
+
+.admin .admin-form .form-control,
+.distributors .admin-form .form-control {
+    padding: 1rem 1.5rem;
+    border-radius: 0.rem;
+    border: 0.1rem solid var(--secondary-color);
+    color: var(--primary-text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: var(--secondary-font);
+}
 /* 01 navbar css */
 
 .header {
@@ -838,4 +867,76 @@ BuyMango Page CSS
     right: 10px; /* Adjust this value to control the arrow's position */
     transform: translateY(-50%);
     pointer-events: none;
+}
+
+
+/* ===========================
+Admin Page CSS
+============================== */
+
+.admin .admin-form textarea {
+    min-height: 15rem;
+}
+
+.admin .content-box .info-box li {
+    position: relative;
+    padding-left: 7rem;
+    padding-bottom: 3.5rem;
+    margin-bottom: 2.9rem;
+}
+
+.admin .content-box .info-box li i {
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    color: var(--primary-text);
+}
+
+.admin .content-box .info-box li p {
+    color: var(--primary-text);
+}
+
+.admin .content-box .info-box li a {
+    color: var(--dark-color);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-family: var(--secondary-font);
+}
+.custom-dropdown {
+    position: relative;
+}
+
+.custom-dropdown select {
+    padding-right: 30px; /* Adjust this value to make room for the arrow */
+}
+
+.custom-dropdown::after {
+    content: '\25BC'; /* Unicode character for a downward-pointing triangle (black down-pointing small triangle) */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust this value to control the arrow's position */
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+th {
+    padding: 1rem 1.5rem;
+    border-radius: 0.rem;
+    border: 0.1rem solid var(--secondary-color);
+    color: var(--primary-text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: var(--secondary-font);
+}
+td {
+    padding: 1rem 1.5rem;
+    border-radius: 0.rem;
+    border: 0.1rem solid var(--secondary-color);
+    color: var(--primary-text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: var(--secondary-font);
 }

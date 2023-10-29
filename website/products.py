@@ -73,16 +73,9 @@ def buyproducts():
             return redirect(url_for("products.buyproducts"))
 
     products = Product.query.all()
+
     return render_template("buyproducts.html", user = current_user, products=products)
 
-@products.route('/download/<int:product_id>')
-def download(id):
-    product = Product.query.get_or_404(id)
-    return send_file(
-        BytesIO(product.img),
-        mimetype=product.mimetype,
-        download_name=product.img_name
-    )
 
 @products.route('/cart', methods=['GET','POST'])
 # @login_required
@@ -92,7 +85,7 @@ def cart():
         id = request.form.get('id')   
         cart_item = Cart.query.filter_by(id=id).first()
         product = Product.query.filter_by(id=id).first()
-        mango = Mango.query.filter_by
+        # mango = Mango.query.filter_by
         if request.form.get('remove') == 'Remove':
             db.session.delete(cart_item)
             db.session.commit()

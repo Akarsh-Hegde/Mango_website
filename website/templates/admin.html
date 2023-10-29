@@ -11,43 +11,43 @@
 </section>
 <!-- banner section exit -->
 <!--Contact Section Start-->
-<section class="contact_section">
+<section class="admin_section">
     <div class="container">
+      <div class="row justify-content-center">
+      <div class="col-12 contact-form">
         <form method="POST" enctype="multipart/form-data">
         </br>
-        <h5 align="center">Add New Product</h5>
+        <h4 align="center">Add New Product</h4>
 
         <div class="form-group">
-            <label for="name">Name</label>
+            <br/>
             <input
             type="text"
             class="form-control"
             id="name"
             name="name"
-            placeholder="Enter Product Name"/>
+            placeholder="New Product Name"/>
         </div>
         <div class="form-group">
-            <label for="price">Price </label>
+            <br/>
             <input
             type="number"
             class="form-control"
             id="price"
             name="price"
-            placeholder="Product Price"/>
+            placeholder="Product Price (Rs.)"/>
         </div>
         <div class="form-group">
-            <label for="quantity">Quantity </label>
+            <br/>
             <input
             type="number"
             class="form-control"
             id="quantity"
             name="quantity"
-            placeholder="Add quantity"/>
+            placeholder="Add quantity (in Dozens)"/>
         </div>
         <div class="form-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Description</span>
-            </div>
+            <br/>
             <input
             type="text"
             class="form-control"
@@ -57,30 +57,31 @@
             
         </div>
         <div class="form-group">
-            <label for="img"> Image </label>
+            <label for="formFileSm" class="form-label"><p>Product Image</p></label>
             <input type="file" class="form-control" name="img" />                                   
         </div>
         <br />
-        <input type="submit" name="add" value="Add" class="btn btn-outline btn-success" />
+        <input type="submit" name="add" value="Add Product" class="btn main-btn" />
         </form>
         </br>
-        <h5 align="center">All Products</h5>
+        <h4 align="center">All Products</h4>
 
         <table class="table" name="Product">
             <thead>
                 <tr>
                     <!-- Your Columns HERE -->
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Options</th>
+                    <th scope="col"><strong>ID</strong></th>
+                    <th scope="col"><strong>Name</strong></th>
+                    <th scope="col"><strong>Price</strong></th>
+                    <th scope="col"><strong>Quantity</strong></th>
+                    <th scope="col"><strong>Product Image</strong></th>
+                    <th scope="col"><strong>Options</strong></th>
                 </tr>
             </thead>
             
             <tbody>
                 {% for product in products %}
-                <form method="POST" >
+                <form method="POST" enctype="multipart/form-data" >
                     <div class="modal fade" id="Modal-EditProduct-{{ product.id }}"
                             tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -152,11 +153,12 @@
                 <td>{{ product.name }}</td>
                 <td>Rs.{{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
+                <td>{{ product.img }}</td>
                 
                 <td>
                     <input type="hidden" name="id" value="{{ product.id }}"/>
-                    <input type="submit" name="remove" value="Remove" class="btn btn-secondary"/>
-                    <input type="submit" name="edit" value="Edit" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-EditProduct-{{ product.id }}"/>
+                    <input type="submit" name="remove" value="Remove" class="btn main-btn"/>
+                    <input type="submit" name="edit" value="Edit" class="btn main-btn" data-toggle="modal" data-target="#Modal-EditProduct-{{ product.id }}"/>
                 </td>
             </tr>
             {% endfor %}
@@ -164,8 +166,8 @@
             </form>
             </br>
             </table>
-            <h5 align="center">User-cart</h5>
-
+            <h4 align="center"> User-cart </h4>
+            
                 <table class="table" name="User-cart">
                     <thead>
                         <tr>
@@ -192,16 +194,18 @@
                         
                         <td>
                             <input type="hidden" name="id" value="{{ cart.id }}"/>
-                            <input type="submit" name="remove" value="Remove" class="btn btn-secondary"/>
-                            <input type="submit" name="buy" value="Add" class="btn btn-primary"/>
+                            <input type="submit" name="remove" value="Remove" class="btn main-btn"/>
+                            <input type="submit" name="buy" value="Add" class="btn main-btn"/>
                         </td>
-                    </tr>
+                </tr>
                 {% endfor %}
             </tbody>
             </form>
             </br>
             </table>
         </div>
-    </section>
+      </div>
+      </div>
+</section>
 {% endblock %}
                 

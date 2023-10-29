@@ -25,9 +25,9 @@ class Product(db.Model):
     price = db.Column(db.Integer(), nullable=False)
     quantity =  db.Column(db.Integer(), nullable=False)
     description = db.Column(db.String(length=1024),nullable=False,unique =True)
-    img = db.Column(db.Text, nullable=False, unique=True)
-    img_name = db.Column(db.Text, nullable=False)
-    mimetype = db.Column(db.Text, nullable=False)
+    img = db.Column(db.String(), nullable=True)
+    # img_name = db.Column(db.Text, nullable=False)
+    # mimetype = db.Column(db.Text, nullable=False)
     # cart_id = db.Column(db.Integer(), db.ForeignKey('cart.id'))
     # carts = db.relationship('Cart', backref='product', lazy=True)
 

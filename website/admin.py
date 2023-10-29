@@ -3,6 +3,8 @@ from flask_login import login_required,current_user
 from .models import Product, User, Cart, Mango
 from . import db
 from werkzeug.utils import secure_filename
+import uuid as uuid
+import os
 
 admin = Blueprint('admin',__name__)
 
@@ -15,8 +17,11 @@ def admin_page():
         quantity = request.form.get('quantity')
         description = request.form.get('description')
         img = request.files['img']
-        filename = secure_filename(img.filename)
-        mimetype = img.mimetype
+
+        img_filename = secure_filename(img.filename)
+        img_name = str(uuid.uuid1()) + "_" + img_filename
+        img_path = os.path.join(os.getcwd(),'website/static/images/products',img_name)
+        img.save(img_path)
 
         id = request.form.get('id')   
         product_check = Product.query.filter_by(id=id).first()
@@ -25,7 +30,7 @@ def admin_page():
             if product_check:
                 flash("Product already exists", category="error")
             else:  
-                new_product = Product(name=name, price=price, quantity=quantity, description=description, img=img.read(), img_name=filename, mimetype=mimetype)
+                new_product = Product(name=name, price=price, quantity=quantity, description=description, img=img_name)
                 db.session.add(new_product)
                 db.session.commit()
                 flash('Product Added!', category='success')
@@ -62,7 +67,7 @@ def admin_page():
     products = Product.query.all()
     carts = Cart.query.all()
 
-    return render_template("admin.html", user=current_user, page = "contact", carts=carts, products=products)
+    return render_template("admin.html", user=current_user, carts=carts, products=products, page = "contact")
 
 
 
