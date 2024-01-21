@@ -55,7 +55,7 @@ Make sure you have the following installed on your machine:
 1. Run the following command to start the Flask application:
 
     ```bash
-    python app.py
+    python main.py
     ```
 
 2. Open your web browser and navigate to [http://localhost:5000](http://localhost:5000) to access Maavu - Organic Mango E-Commerce Website.
